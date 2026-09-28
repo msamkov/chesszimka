@@ -1,0 +1,356 @@
+:root {
+  --bg: #1b1f2a;
+  --panel: #242938;
+  --panel-light: #2c3345;
+  --accent: #4f8cff;
+  --accent-dark: #3568d4;
+  --text: #eef1f7;
+  --text-dim: #9aa3b8;
+  --success: #37c98a;
+  --danger: #ef5a6f;
+  --board-max: 560px;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: radial-gradient(circle at top, #262c3d, var(--bg));
+  color: var(--text);
+}
+
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px 16px 48px;
+}
+
+.app-title {
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin: 8px 0 24px;
+  letter-spacing: 0.5px;
+  text-align: center;
+}
+
+.card {
+  background: var(--panel);
+  border-radius: 16px;
+  padding: 28px 24px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.card h2 {
+  margin: 0 0 4px;
+  font-size: 1.3rem;
+}
+
+input[type='text'] {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #3a4256;
+  background: var(--panel-light);
+  color: var(--text);
+  font-size: 1rem;
+  outline: none;
+}
+
+input[type='text']:focus {
+  border-color: var(--accent);
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 18px;
+  font-size: 1rem;
+  font-weight: 600;
+  background: var(--panel-light);
+  color: var(--text);
+  transition: background 0.15s ease, transform 0.05s ease;
+}
+
+button:hover {
+  background: #38405a;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+button.primary {
+  background: var(--accent);
+  color: white;
+}
+
+button.primary:hover {
+  background: var(--accent-dark);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+button.link {
+  background: transparent;
+  color: var(--accent);
+  padding: 4px 6px;
+}
+
+.button-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.button-row button {
+  flex: 1;
+  min-width: 140px;
+}
+
+.color-choice {
+  display: flex;
+  gap: 10px;
+}
+
+.color-choice button {
+  flex: 1;
+}
+
+.color-choice button.selected {
+  background: var(--accent);
+  color: white;
+}
+
+.game-layout {
+  width: 100%;
+  max-width: var(--board-max);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.player-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--panel);
+  border-radius: 12px;
+  padding: 10px 16px;
+  font-size: 0.95rem;
+}
+
+.player-row.active {
+  outline: 2px solid var(--accent);
+}
+
+.player-name {
+  font-weight: 600;
+}
+
+.player-color {
+  color: var(--text-dim);
+  font-size: 0.85rem;
+}
+
+.board-wrapper {
+  width: 100%;
+  max-width: var(--board-max);
+  aspect-ratio: 1 / 1;
+  margin: 0 auto;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.status-bar {
+  text-align: center;
+  font-size: 1rem;
+  color: var(--text-dim);
+  min-height: 24px;
+}
+
+.status-bar.check {
+  color: var(--danger);
+  font-weight: 600;
+}
+
+.result-banner {
+  text-align: center;
+  background: var(--panel);
+  border-radius: 12px;
+  padding: 16px;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--success);
+}
+
+.room-code-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: var(--panel-light);
+  border-radius: 10px;
+  padding: 12px;
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 4px;
+}
+
+.link-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.link-row input {
+  flex: 1;
+}
+
+.hint {
+  color: var(--text-dim);
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+.error-text {
+  color: var(--danger);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.promotion-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+
+.promotion-box {
+  background: var(--panel);
+  border-radius: 14px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+
+.promotion-pieces {
+  display: flex;
+  gap: 10px;
+}
+
+.promotion-pieces button {
+  font-size: 1.6rem;
+  width: 56px;
+  height: 56px;
+}
+
+.footer-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+button.secondary {
+  background: transparent;
+  color: var(--danger);
+  border: 1px solid var(--danger);
+}
+
+button.secondary:hover {
+  background: rgba(239, 90, 111, 0.12);
+}
+
+.player-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.player-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--panel-light);
+  border-radius: 10px;
+  padding: 10px 14px;
+  gap: 12px;
+}
+
+.waiting-banner {
+  text-align: center;
+  background: var(--panel-light);
+  border-radius: 12px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.overlay-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 60;
+  padding: 16px;
+}
+
+.overlay-card {
+  background: var(--panel);
+  border-radius: 16px;
+  padding: 24px;
+  max-width: 360px;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+}
+
+.invite-name {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+@media (max-width: 480px) {
+  .app-title {
+    font-size: 1.9rem;
+  }
+  .card {
+    padding: 20px 16px;
+  }
+}
